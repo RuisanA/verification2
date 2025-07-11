@@ -1,0 +1,9 @@
+client.once('ready', async () => {
+  console.log('Bot is ready!');
+  await refreshTokens();
+
+  // 毎日0時にリフレッシュトークンを更新
+  cron.schedule('0 0 0 * * *', async () => {
+    await refreshTokens();
+  });
+});
