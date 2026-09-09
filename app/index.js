@@ -415,24 +415,6 @@ app.listen(3000, () => {
     console.log(`App listening at http://localhost:${3000}`);
 });
 
-client.on("messageCreate", async (message) => {
-  if (message.author.bot) return;
-
-  // 「おはよう」に反応
-  if (message.content === "おはよう") {
-    return message.reply("おはよう");
-  }
-
-  // 「!userid @メンション」に反応
-  if (message.content.startsWith("!userid")) {
-    const targetUser = message.mentions.users.first();
-    if (!targetUser) {
-      return message.reply("ユーザーをメンションしてください。（例: !userid @user）");
-    }
-    return message.reply(`${targetUser.tag} のユーザーID: \`${targetUser.id}\``);
-  }
-});
-
 client.on("interactionCreate", async (interaction) => {
     if (!interaction.isCommand()) {
         return;
